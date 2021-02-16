@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <app-header @pass="pass"></app-header>
+  <app-content :propsdata="num"></app-content>
+  <app-content2 @reset="reset"></app-content2>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  var appHeader = {
+    template: '<button @click="passEvent">click</button>',
+    methods: {
+      passEvent: function() {
+        this.$emit('pass');
+      }
+    }
+  }
+  var appContent = {
+    template: '<p>{{ propsdata }}</p>',
+    props: ['propsdata']
+  }
+  var appContent2 = {
+    template: '<button @click="reset">reset</button>',
+    methods: {
+      reset: function() {
+        this.$emit('reset');
+      }
+    }
+  }
+
+  new Vue({
+    el: '#app',
+    components: {appHeader,appContent,appContent2},
+
+
+    data: {
+      num: 10
+    },
+    methods: {
+      pass: function() {
+        this.num += 1;
+        this.num.innerText;
+      },
+      reset: function() {
+        this.num = 0;
+      }
+    }
+  });
+</script>
+</body>
+</html>

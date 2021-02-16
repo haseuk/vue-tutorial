@@ -9,8 +9,7 @@
 <body>
   <div id="app">
     <app-header></app-header>
-    <app-header></app-header>
-    <app-header></app-header>
+    <app-footer></app-footer>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
@@ -20,6 +19,11 @@
 
   new Vue({
     el: '#app',
+    components: {
+      'app-footer': {
+        template: '<footer>footer</footer>'
+      }
+    },
 
     data: {
 
